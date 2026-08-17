@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form id="profileForm" class="form-container" novalidate>
+  <h1 class="page-title"><span>Create</span> Profile</h1>
+
+  <!-- General Information -->
+  <h2 class="section-title">General Information</h2>
+  <div class="row">
+    <div class="field" id="field-firstName">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter First Name">
+      <span class="error-text"></span>
+    </div>
+    <div class="field" id="field-lastName">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name">
+      <span class="error-text"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field" id="field-department">
+      <label for="department">Department</label>
+      <select id="department" name="department">
+        <option value="" disabled selected>Select Department</option>
+        <option value="CSE">CSE</option>
+        <option value="EEE">EEE</option>
+        <option value="BBA">BBA</option>
+        <option value="Civil">Civil</option>
+      </select>
+      <span class="error-text"></span>
+    </div>
+    <div class="field" id="field-idNo">
+      <label for="idNo">ID No</label>
+      <input type="text" id="idNo" name="idNo" placeholder="Ex-2003008">
+      <span class="error-text"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field" id="field-session">
+      <label for="session">Session</label>
+      <input type="text" id="session" name="session" placeholder="Ex-2020-2021">
+      <span class="error-text"></span>
+    </div>
+    <div class="field" id="field-semester">
+      <label for="semester">Semester</label>
+      <select id="semester" name="semester">
+        <option value="" disabled selected>Select Semester</option>
+        <option value="1st year odd semester">1st year odd semester</option>
+        <option value="1st year even semester">1st year even semester</option>
+        <option value="2nd year odd semester">2nd year odd semester</option>
+        <option value="2nd year even semester">2nd year even semester</option>
+        <option value="3rd year odd semester">3rd year odd semester</option>
+        <option value="3rd year even semester">3rd year even semester</option>
+        <option value="4th year odd semester">4th year odd semester</option>
+        <option value="4th year even semester">4th year even semester</option>
+      </select>
+      <span class="error-text"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field" id="field-bloodGroup">
+      <label for="bloodGroup">Blood Group</label>
+      <input type="text" id="bloodGroup" name="bloodGroup" placeholder="Enter Blood Group (e.g. A+, B+, O+)">
+      <span class="error-text"></span>
+    </div>
+    <div class="field" id="field-dob">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob">
+      <span class="error-text"></span>
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <h2 class="section-title">Contact Information</h2>
+  <div class="field single-field" id="field-mobile">
+    <label for="mobile">Mobile No.</label>
+    <input type="tel" id="mobile" name="mobile" placeholder="Enter Phone No. (e.g. 01700000000)">
+    <span class="error-text"></span>
+  </div>
+
+  <div class="field single-field mt-14" id="field-email">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email">
+    <span class="error-text"></span>
+  </div>
+
+  <!-- Security Information -->
+  <h2 class="section-title">Security Information</h2>
+  <div class="field single-field" id="field-password">
+    <label for="password">Password</label>
+    <div class="password-wrapper">
+      <input type="password" id="password" name="password" placeholder="Enter strong password">
+      <button type="button" id="togglePassword" class="toggle-password-btn" aria-label="Toggle password visibility" title="Show / Hide Password">
+        <svg id="eyeIcon" class="eye-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+    </div>
+    <span class="error-text"></span>
+  </div>
+
+  <!-- Address Information -->
+  <h2 class="section-title">Address Information</h2>
+  <div class="field single-field" id="field-permAddress">
+    <label for="permAddress">Permanent Address</label>
+    <input type="text" id="permAddress" name="permAddress" placeholder="Enter Permanent Address">
+    <span class="error-text"></span>
+  </div>
+
+  <div class="field single-field mt-14" id="field-presentAddress">
+    <label for="presentAddress">Present Address or Hall Name</label>
+    <input type="text" id="presentAddress" name="presentAddress" placeholder="Enter Present Address">
+    <span class="error-text"></span>
+  </div>
+
+  <button class="create-btn" type="submit" id="submitBtn">Create</button>
+</form>
+
+<!-- Modal for Profile Details Display -->
+<div id="profileModal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h2>Profile Created Successfully! 🎉</h2>
+      <button type="button" class="close-modal-btn" id="closeModalBtn" aria-label="Close modal">&times;</button>
+    </div>
+    <div class="modal-body" id="modalContent">
+      <!-- Injected by script.js -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-secondary" id="modalEditBtn">Edit Details</button>
+      <button type="button" class="btn-primary" id="modalPrintBtn">Print / Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
